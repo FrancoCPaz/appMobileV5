@@ -1,0 +1,24 @@
+ion-content {
+    --background: none;
+    background-image: url('../../../assets/icon/fondoAzul.png');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+  }
+
+ h1{
+    text-align: center;
+    color: #776DF2;
+    font-weight: bold;
+ }
+
+ ion-icon{
+    width: 200px;
+    height: 200px;
+    margin-top: 40px;
+    margin-left: 120px;
+ }
+.inicio{
+    margin-top: 5000px;
+}
