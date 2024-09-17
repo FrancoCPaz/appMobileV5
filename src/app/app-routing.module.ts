@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   {
@@ -26,6 +23,28 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'restaurar',
+    loadChildren: () => import('./pages/restaurar/restaurar.module').then( m => m.RestaurarPageModule)
+  },
+  {
+    path: 'registrar',
+    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },
+
+  //rediccionamiento a pag error si no se encuentra la ruta
+  {
+    path: '**',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
+    path: 'tareas',
+    loadChildren: () => import('./pages/tareas/tareas.module').then( m => m.TareasPageModule)
+  },
+  {
+    path: 'inventario',
+    loadChildren: () => import('./pages/inventario/inventario.module').then( m => m.InventarioPageModule)
   },
 ];
 

@@ -1,0 +1,40 @@
+<ion-content>
+  <ion-card class="ion-padding transparent-card card-margin">
+    <img src="../../../assets/icon/kasskda.png" alt="login" class="ion-padding" />
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <h1>Restaurar</h1>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Campo de entrada de usuario -->
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input
+          placeholder="Ingresa tu correo"
+          type="email"
+          required
+        ></ion-input>
+      </ion-item>
+      
+      <!-- Botón de ingreso -->
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="mostrarAlerta()" expand="block" shape="round" color="secondary">
+            <h2>recuperar contraseña</h2>
+          </ion-button>
+        </ion-col>
+
+        <!-- Enlaces a restaurar contraseña y registro -->
+        <ion-col size="12">
+          <p class="ion-text-center">
+            <a routerLink="/login">ya tienes una cuenta?</a>
+            <br><br>
+              <a routerLink="/login">Volver</a>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,46 @@
+ion-content {
+  --background: none;
+  background-image: url('../../../assets/icon/fondoAzul.png');
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+}
+
+.transparent-card {
+/* From https://css.glass */
+background: rgba(7, 19, 51, 0.58);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.5px);
+-webkit-backdrop-filter: blur(10.5px);
+border: 1px solid rgba(7, 19, 51, 0.39);
+}
+
+.contraseña{
+  padding-top: 10px;
+}
+
+.card-margin {
+margin-top: 80px; 
+}
+
+.custom-input {
+  --border-radius: 15px; /* Borde redondeado */
+  margin-bottom: 15px; /* Separación entre los inputs */
+  --padding-start: 10px; /* Añade un poco de padding */
+  
+  ion-input {
+    --background: #fff; /* Color de fondo blanco */
+    --border-width: 1px; /* Ancho del borde */
+    --border-color: #ccc; /* Color del borde */
+    --box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+}
+h1,h2{
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}

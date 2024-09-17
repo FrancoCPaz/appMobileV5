@@ -1,0 +1,85 @@
+<ion-content [fullscreen]="true">
+    <ion-card class="ion-padding transparent-card card-margin">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h1>REGISTRO</h1>
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <!--usuario-->
+        <ion-item class="custom-input">
+          <ion-input
+            label="Usuario"
+            fill="solid"
+            placeholder="Ingresa el usuario"
+            labelPlacement="floating"
+            type="text"
+          >
+          </ion-input>
+        </ion-item>
+  
+        <!--telefono-->
+        <ion-item class="custom-input">
+          <ion-input
+            label="Teléfono"
+            fill="solid"
+            placeholder="Ingresa el teléfono"
+            labelPlacement="floating"
+            type="text"
+          >
+          </ion-input>
+        </ion-item>
+        <!--correo-->
+        <ion-item class="custom-input">
+            <ion-input
+              label="correo"
+              fill="solid"
+              placeholder="Ingresa el teléfono"
+              labelPlacement="floating"
+              type="emai"
+            >
+            </ion-input>
+          </ion-item>
+  
+        <!--contraseña-->
+        <ion-item class="custom-input">
+          <ion-input
+            label="Contraseña"
+            fill="solid"
+            placeholder="Ingresa la contraseña"
+            labelPlacement="floating"
+            type="password"
+          >
+          </ion-input>
+        </ion-item>
+  
+        <!--repetir contraseña-->
+        <ion-item class="custom-input">
+          <ion-input
+            label="Repetir Contraseña"
+            fill="solid"
+            placeholder="Repite la contraseña"
+            labelPlacement="floating"
+            type="password"
+          >
+          </ion-input>
+        </ion-item>
+  
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" (click)="RegistarseAlerta()" shape="round" color="secondary">
+              <h2>Registrar</h2>
+            </ion-button>
+          </ion-col>
+          <ion-col size="12">
+            <p class="ion-text-center">
+              <br><br>
+              <a routerLink="/login">Volver</a>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
