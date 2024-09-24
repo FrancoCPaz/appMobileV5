@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { MainPageRoutingModule } from './main-routing.module';
 
 import { MainPage } from './main.page';
-import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -18,6 +17,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
     MainPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [MainPage,MenuComponent]
+  declarations: [MainPage]
 })
 export class MainPageModule {}

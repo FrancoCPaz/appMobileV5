@@ -32,6 +32,14 @@ const routes: Routes = [
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
   },
+  {
+    path: 'tareas',
+    loadChildren: () => import('./pages/tareas/tareas.module').then( m => m.TareasPageModule)
+  },
+  {
+    path: 'inventario',
+    loadChildren: () => import('./pages/inventario/inventario.module').then( m => m.InventarioPageModule)
+  },
 
   //rediccionamiento a pag error si no se encuentra la ruta
   {

@@ -2,12 +2,21 @@
   <ion-menu contentId="main-content">
     <ion-header>
       <ion-toolbar color="tertiary">
-        <ion-title>Menu Content</ion-title>
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
-      This is the menu content.
+
+    <ion-content>
+      <ion-list>
+        <ion-item button [routerLink]="['/inventario']">
+          <ion-label>Inventario</ion-label>
+        </ion-item>
+        <ion-item button [routerLink]="['/tareas']">
+          <ion-label>Tareas</ion-label>
+        </ion-item>
+      </ion-list>>
     </ion-content>
+
   </ion-menu>
   <div class="ion-page" id="main-content">
     <ion-header>

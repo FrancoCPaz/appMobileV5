@@ -5,10 +5,11 @@ import { TabsComponent } from './tabs/tabs.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     MenuComponent,
-    TabsComponents
+    TabsComponent
   ],
   imports: [
     CommonModule,
