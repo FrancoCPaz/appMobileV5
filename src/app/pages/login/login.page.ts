@@ -1,66 +1,99 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { User } from 'src/app/models/user.model';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
-  // Declaro el modelo
-  login: any = {
-    usuario: '',
-    password: '',
-  };
+export class LoginPage implements OnInit{
 
-  // Variable para guardar campos vacíos
-  field: string = '';
 
-  constructor(
-    public router: Router,
-    public toastController: ToastController
-  ) { }
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
+  })
 
-  // Función para llevar el modelo al home
-  ingresar() {
-    if (this.validateModel(this.login)) {
-      this.presentToast('bottom', 'Bienvenida ' + this.login.usuario);
-      let navigationExtras: NavigationExtras = {
-        state: { login: this.login },
-      };
-      console.log('Redirigiendo a /main...'); // Debug
-      this.router.navigate(['/main'], navigationExtras);
-    } else {
-      this.presentToast('middle', 'Falta el campo ' + this.field, 3000);
+  firebaseSvc = inject(FirebaseService);
+
+  utilsSvc = inject(UtilsService)
+
+  ngOnInit() {    
+  }
+
+  async submit(){
+    if (this.form.valid) {
+
+      const loading = await this.utilsSvc.loading();
+      await loading.present();
+
+      this.firebaseSvc.singIn(this.form.value as User).then(res => {
+
+        this.getUserInfo(res.user.uid);
+
+      }).catch(error => {
+        console.log(error);
+
+        this.utilsSvc.presentToast({
+          message: error.message,
+          duration: 2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        })
+
+      }).finally(() => {
+        loading.dismiss();
+      })
     }
   }
-  
 
-  // Generación del present toast
-  async presentToast(
-    position: 'top' | 'middle' | 'bottom',
-    msg: string,
-    duration?: number
-  ) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: duration || 2000,
-      position: position
-    });
-    await toast.present();
-  }
 
-  // Validación del modelo
-  validateModel(model: any) {
-    for (let [key, value] of Object.entries(model)) { 
-      if (value == '') {
-        this.field = key;
-        return false;
-      }
+  async getUserInfo(uid: string){
+    if (this.form.valid) {
+
+      const loading = await this.utilsSvc.loading();
+      await loading.present();
+
+      let path = `users/${uid}`;
+
+      this.firebaseSvc.getDocument(path).then((user: User) => {
+
+        this.utilsSvc.saveInLocalStorage('user', user);
+        this.utilsSvc.routerLink('/main');
+        this.form.reset();  
+        
+        this.utilsSvc.presentToast({
+          message: `Te damos la bienvenida ${user.name}`,
+          duration: 1500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'person-circle-outline'
+        })
+      
+
+      }).catch(error => {
+        console.log(error);
+
+        this.utilsSvc.presentToast({
+          message: error.message,
+          duration: 2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        })
+
+      }).finally(() => {
+        loading.dismiss();
+      })
     }
-    return true;
   }
+
 
 }
 

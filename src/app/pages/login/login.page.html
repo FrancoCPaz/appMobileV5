@@ -1,5 +1,4 @@
 <ion-content>
-
   <ion-content [fullscreen]="true">
     <ion-card class="ion-padding transparent-card card-margin">
       <img src="../../../assets/icon/kasskda.png" alt="login" class="ion-padding" />
@@ -8,52 +7,52 @@
           <h1>Inicio de sesión</h1>
         </ion-card-title>
       </ion-card-header>
+      
+      
 
-      <ion-card-content>
-        <ion-item class="custom-input">
-          <ion-input
-            label="Usuario"
-            fill="solid"
-            placeholder="Ingresa el usuario"
-            labelPlacement="floating"
-            type="text"
-            [(ngModel)]='login.usuario'>
-          </ion-input>
-        </ion-item>
-        
-        
-        <ion-item class="custom-input">
-          <ion-input
-            label="Contraseña"
-            fill="solid"
-            placeholder="Ingresa la contraseña"
-            labelPlacement="floating"
-            type="password"
-            [(ngModel)]='login.password'>
-          </ion-input>
-        </ion-item>
+      <form [formGroup]="form" clas="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
-        <ion-row>
-          <ion-col size="12">
-            <ion-button expand="block" shape="round" 
-            color="secondary" (click)="ingresar()"><h2>Ingresar</h2></ion-button>
-          </ion-col>
-          
-          <ion-col size="12">
-            <p class="ion-text-center">
-              <a routerLink="/restaurar">¿Te olvidaste de la contraseña?</a>
-              <br><br>
-              <a routerLink="/registrar">Registrarse</a>
-              <br><br>
-              <ion-button [routerLink]="['/inicio']" size="small" color="secondary" shape="round" style="color: white;" >
-                <ion-icon slot="start" name="home"></ion-icon>
-                Volver
-              </ion-button>
-              
-            </p>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
+        <!--========== Email =========-->
+        <app-custom-input 
+        autocomplete="email"
+        icon="mail-outline"
+        [control]="form.controls.email"
+        type="email"
+        label="Correo"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+          <div *ngIf="form.controls.email.errors?.['required']">El correo es requerido</div>
+          <div *ngIf="form.controls.email.errors?.['email']">Ingrese un correo valido</div>
+        </div>
+        
+        <!--========== Contraseña =========-->
+        <app-custom-input 
+        [control]="form.controls.password"
+        icon="lock-closed-outline"
+        type="password"
+        label="Contraseña"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+          <div *ngIf="form.controls.password.errors?.['required']">La contraseña es requerida</div>
+        </div>
+        
+        <p routerLink="/restaurar" class="ion-text-end">¿Olvidaste la contraseña?</p>
+
+        <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+          Ingresar
+          <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button class="ion-margig-top" routerLink="/registrar" expand="block" mode="ios" fill="outline">
+          Registrate
+          <ion-icon slot="end" name="person-add-outline"></ion-icon>
+        </ion-button>
+
+      </form>
+
+
     </ion-card>
   </ion-content>
 </ion-content>

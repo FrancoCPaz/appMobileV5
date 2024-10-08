@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RestaurarPageRoutingModule } from './restaurar-routing.module';
 
 import { RestaurarPage } from './restaurar.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RestaurarPageRoutingModule
+    RestaurarPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [RestaurarPage]
 })

@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage {
+export class MainPage implements OnInit{
+
+
+  ngOnInit() {    
+  }
+
+
   login: any;
 
   constructor(
@@ -24,11 +31,6 @@ export class MainPage {
       }
     });
   }
-
-  // Función para mostrar la alerta
-cerrarSesionAlert() {
-  this.presentAlert('Cerrar sesion', 'sesion cerrada correctamente');
-}
 
 // Creación de alerta
 async presentAlert(msgHeader: string, msg: string) {
