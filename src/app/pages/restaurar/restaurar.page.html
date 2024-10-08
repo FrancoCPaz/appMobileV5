@@ -1,40 +1,44 @@
 <ion-content>
-  <ion-card class="ion-padding transparent-card card-margin">
-    <img src="../../../assets/icon/kasskda.png" alt="login" class="ion-padding" />
-    <ion-card-header>
-      <ion-card-title class="ion-text-center">
-        <h1>Restaurar</h1>
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <!-- Campo de entrada de usuario -->
-      <ion-item class="custom-input">
-        <ion-label position="stacked">Correo Electrónico</ion-label>
-        <ion-input
-          placeholder="Ingresa tu correo"
-          type="email"
-          required
-        ></ion-input>
-      </ion-item>
+  <ion-content [fullscreen]="true">
+    <ion-card class="ion-padding transparent-card card-margin">
+      <img src="../../../assets/icon/kasskda.png" alt="login" class="ion-padding" />
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h1>Inicio de sesión</h1>
+        </ion-card-title>
+      </ion-card-header>
       
-      <!-- Botón de ingreso -->
-      <ion-row>
-        <ion-col size="12">
-          <ion-button (click)="mostrarAlerta()" expand="block" shape="round" color="secondary">
-            <h2>recuperar contraseña</h2>
-          </ion-button>
-        </ion-col>
+      
 
-        <!-- Enlaces a restaurar contraseña y registro -->
-        <ion-col size="12">
-          <p class="ion-text-center">
-            <a routerLink="/login">ya tienes una cuenta?</a>
-            <br><br>
-              <a routerLink="/login">Volver</a>
-          </p>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+      <form [formGroup]="form" clas="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+
+        <p class="ion-text-center">Te enviaremos un email para que puedas restablecer tu contraseña</p>
+
+        <!--========== Email =========-->
+        <app-custom-input 
+        autocomplete="email"
+        icon="mail-outline"
+        [control]="form.controls.email"
+        type="email"
+        label="Correo"
+        ></app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+          <div *ngIf="form.controls.email.errors?.['required']">El correo es requerido</div>
+          <div *ngIf="form.controls.email.errors?.['email']">Ingrese un correo valido</div>
+        </div>
+        
+
+
+        <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+          Recuperar
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
+
+
+      </form>
+
+
+    </ion-card>
+  </ion-content>
 </ion-content>

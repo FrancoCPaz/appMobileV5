@@ -73,7 +73,7 @@ export class RegistrarPage implements OnInit {
       this.firebaseSvc.setDocument(path, this.form.value).then(async res => {
 
         this.utilsSvc.saveInLocalStorage('user', this.form.value);
-        this.utilsSvc.routerLink('main');
+        this.utilsSvc.routerLink('/main');
         this.form.reset();        
       
 

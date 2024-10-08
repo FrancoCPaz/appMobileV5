@@ -1,5 +1,4 @@
 <ion-content>
-
   <ion-content [fullscreen]="true">
     <ion-card class="ion-padding transparent-card card-margin">
       <img src="../../../assets/icon/kasskda.png" alt="login" class="ion-padding" />
@@ -7,7 +6,9 @@
         <ion-card-title class="ion-text-center">
           <h1>Inicio de sesión</h1>
         </ion-card-title>
-      </ion-card-header>   
+      </ion-card-header>
+      
+      
 
       <form [formGroup]="form" clas="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
