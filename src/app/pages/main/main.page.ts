@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils.service';
+import { AddUpdateProductComponent } from 'src/app/components/add-update-product/add-update-product.component';
 
 
 @Component({
@@ -14,6 +16,7 @@ export class MainPage implements OnInit{
   ngOnInit() {    
   }
 
+  utilsSvc = inject(UtilsService);
 
   login: any;
 
@@ -49,6 +52,15 @@ async presentAlert(msgHeader: string, msg: string) {
 
   await alert.present();
 }
+
+// ========== Agregar o actualizar productos ==========
+addUpdateProduct() {
+  this.utilsSvc.presentModal({
+    component: AddUpdateProductComponent,
+    cssClass: 'add-update-modal'
+  })
+}
+
 
   
 }

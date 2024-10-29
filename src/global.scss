@@ -41,3 +41,9 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 
+@media (min-width: 769px) {
+   .add-update-modal {
+      --height: 680px;
+   }
+}
+

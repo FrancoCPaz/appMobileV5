@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CustomInputComponent } from './custom-input/custom-input.component';
+import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     TabsComponent,
     HeaderComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    AddUpdateProductComponent
 
   ],
   imports: [
@@ -29,7 +31,8 @@ import { CustomInputComponent } from './custom-input/custom-input.component';
     TabsComponent,
     HeaderComponent,
     CustomInputComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AddUpdateProductComponent
   ]
 })
 export class ComponentsModule { }
